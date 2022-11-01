@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stylenew.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Human Suicide Rate Prediction </h1>
+
+  
+  <!-- Main Input For Receiving Query to our ML -->
+  <form action="{{ url_for('predict')}}" method="POST">
+    <select name="country">
+        <option value="0">Albania</option>
+        <option value="1">Antigua and Barbuda</option>
+        <option value="2">Argentina</option>
+        <option value="3">Armenia</option>
+        <option value="4">Aruba</option>
+        <option value="5">Australia</option>
+        <option value="6">Austria</option>
+        <option value="7">Azerbaijan</option>
+        <option value="8">Bahamas</option>
+        <option value="9">Bahrain</option>
+        <option value="10">Barbados</option>
+        <option value="11">Belarus</option>
+        <option value="12">Belgium</option>
+        <option value="13">Belize</option>
+        <option value="14">Bosnia </option>
+        <option value="15">Brazil</option>
+        <option value="16">Bulgaria</option>
+        <option value="17">Cabo </option>
+        <option value="18">Canada</option>
+        <option value="19">Chile</option>
+        <option value="20">Colombia</option>
+        <option value="21">Costa </option>
+        <option value="22">Croatia</option>
+        <option value="23">Cuba</option>
+        <option value="24">Cyprus</option>
+        <option value="25">Czech </option>
+        <option value="26">Denmark</option>
+        <option value="27">Dominica</option>
+        <option value="28">Ecuador</option>
+        <option value="29">El </option>
+        <option value="30">Estonia</option>
+        <option value="31">Fiji</option>
+        <option value="32">Finland</option>
+        <option value="33">France</option>
+        <option value="34">Georgia</option>
+        <option value="35">Germany</option>
+        <option value="36">Greece</option>
+        <option value="37">Grenada</option>
+        <option value="38">Guatemala</option>
+        <option value="39">Guyana</option>
+        <option value="40">Hungary</option>
+        <option value="41">Iceland</option>
+        <option value="42">Ireland</option>
+        <option value="43">Israel</option>
+        <option value="44">Italy</option>
+        <option value="45">Jamaica</option>
+        <option value="46">Japan</option>
+        <option value="47">Kazakhstan</option>
+        <option value="48">Kiribati</option>
+        <option value="49">Kuwait</option>
+        <option value="50">Kyrgyzstan</option>
+        <option value="51">Latvia</option>
+        <option value="52">Lithuania</option>
+        <option value="53">Luxembourg</option>
+        <option value="54">Macau</option>
+        <option value="55">Maldives</option>
+        <option value="56">Malta</option>
+        <option value="57">Mauritius</option>
+        <option value="58">Mexico</option>
+        <option value="59">Mongolia</option>
+        <option value="60">Montenegro</option>
+        <option value="61">Netherlands</option>
+        <option value="62">New Zealand</option>
+        <option value="63">Nicaragua</option>
+        <option value="64">Norway</option>
+        <option value="65">Oman</option>
+        <option value="66">Panama</option>
+        <option value="67">Paraguay</option>
+        <option value="68">Philippines</option>
+        <option value="69">Poland</option>
+        <option value="70">Portugal</option>
+        <option value="71">Puerto Rico</option>
+        <option value="72">Qatar</option>
+        <option value="73">Republic of Korea</option>
+        <option value="74">Romania</option>
+        <option value="75">Russian Federation</option>
+        <option value="76">Saint Kitts and Nevis</option>
+        <option value="77">Saint </option>
+        <option value="78">Saint Vincent and Grenadines</option>
+        <option value="79">San Marino</option>
+        <option value="80">Serbia</option>
+        <option value="81">Seychelles</option>
+        <option value="82">Singapore</option>
+        <option value="83">Slovakia</option>
+        <option value="84">Slovenia</option>
+        <option value="85">South Africa</option>
+        <option value="86">Spain</option>
+        <option value="87">Sri Lanka</option>
+        <option value="88">Suriname</option>
+        <option value="89">Sweden</option>
+        <option value="90">Switzerland</option>
+        <option value="91">Thailand</option>
+        <option value="92">Trinidad </option>
+        <option value="93">Turkey</option>
+        <option value="94">Turkmenistan</option>
+        <option value="95">Ukraine</option>
+        <option value="96">United Arab Emirates</option>
+        <option value="97">United Kingdom</option>
+        <option value="98">United States</option>
+        <option value="99">Uruguay</option>
+        <option value="100">Uzbekistan</option>
+      </select>
+      <input type="text" name="year" placeholder="Year" required="required" />
+      <select name="Gender">
+      <option value="1">male</option>
+      <option value="0">female</option>
+      </select>
+        <select name="Age_group">
+          <option value="0">15-24 years</option>
+          <option value="1">35-54 years</option>
+          <option value="2">75+ years  </option>
+          <option value="3">25-34 years</option>
+          <option value="4">55-74 years</option>
+          <option value="5">5-14 years </option>
+        </select>
+        <select name="Generation">
+          <option value="0">Generation X</option>
+          <option value="1">Silent</option>
+          <option value="2">Millenials</option>
+          <option value="3">Boomers</option>
+          <option value="4">G.I. Generatio </option>
+          <option value="5">Generation Z   </option>
+        </select>
+
+        <input type="text" name="Population" placeholder="Population" required="required" />
+        <input type="text" name="GDP_for_year" placeholder="GDP for year" required="required" />
+        <input type="text" name="Suicide_count" placeholder="Suicide count" required="required" />
+        <input type="text" name="GDP_per_capita" placeholder="GDP per capita" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+
+ </div>
+
+
+</body>
+</html>
